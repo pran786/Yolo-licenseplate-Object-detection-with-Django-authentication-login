@@ -1,0 +1,46 @@
+{% load static %}
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8" /> 
+<link rel="stylesheet" href="{% static '/css/main.css' %}" />
+<Script src="{% static '/js/main.js' %}"></script>
+<title>Login Page</title>
+</head>
+
+<body>
+    <h1 class="heading">Please login to see the stream:</h1>
+
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-field">
+          <input type="text" id="email" name="email"   required>
+          <label for="email">Enter Username/Email</label>
+        </div>
+       <div class="form-field">
+          <input type="password" id="password" name="password" required>
+          <label for="password">Password</label>
+        </div>
+        <!-- <div class="form-field">
+          <input type="text" id="ip-address" name="ip-address" required>
+          <label for="ip-address">IP Address</label>
+        </div>
+        <div class="form-field">
+          <input type="text" id="port" name="port" required>
+          <label for="port">Port</label> 
+        </div> -->
+        <button type="submit" >Login Now</button>
+      </form>
+      <form method="post" action="/livestream">
+        {% csrf_token %}
+        
+        <button type="submit" >Watch Live Detection Now</button>
+    </form>
+      
+</div>
+</body>
+</html>
